@@ -8,13 +8,14 @@ class Solution:
             left = i+1
             right = len(nums)-1
             while left<right:
-                if nums[i]+nums[left]+nums[right] == 0:
+                sumv = nums[i]+nums[left]+nums[right]
+                if sumv == 0:
                     answer.append([nums[i], nums[left],nums[right]])
                     while left<right and nums[left] == nums[left+1]: left +=1
                     while left<right and nums[right] == nums[right-1]: right -=1
                     left +=1
                     right -=1
-                elif nums[i]+nums[left]+nums[right] > 0:
+                elif sumv > 0:
                     right -= 1
                 else:
                     left +=1
