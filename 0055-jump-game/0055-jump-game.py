@@ -5,5 +5,5 @@ class Solution:
         for ni, num in enumerate(nums):
             if ni > maxv: return False
             maxv = max(ni+num, maxv)
-            if maxv > len(nums): return True
+            if maxv >= len(nums)-1: return True
         return False
