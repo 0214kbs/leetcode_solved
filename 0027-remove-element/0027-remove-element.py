@@ -1,24 +1,10 @@
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        if len(nums) == 1 and nums[0] == val:
-            nums = []
-            return len(nums)
-        
-        last = len(nums) -1
-        for i in range(len(nums)-1,-1,-1):
-            if nums[i] != val:
-                last = i
-                break
-        
-        for i in range(len(nums)):
-            if last <= i: break
-            if nums[i] == val:
-                nums[i] = nums[last]
-                
-                last -=1
-                while last>=i:
-                    if nums[last] != val: break
-                    if nums[last] == val: last -= 1
-                
-        nums = nums[:last+1]
-        return len(nums)
+        if len(nums) == 0:
+            return 0
+        res_i = 0
+        for check_i in range(0, len(nums)):
+            if nums[check_i] != val:
+                nums[res_i] = nums[check_i]
+                res_i += 1
+        return res_i
