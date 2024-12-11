@@ -5,8 +5,10 @@ class Solution:
         max_profit = 0
         for i in range(len(prices)):
             price = prices[i]
-            if minv < price:
-                max_profit = max(price-minv, max_profit)
-            else:
+            if minv > price:
                 minv = price
+                continue
+            if price-minv > max_profit:
+                
+                max_profit = price-minv
         return max_profit
