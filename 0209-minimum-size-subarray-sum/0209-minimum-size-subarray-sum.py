@@ -1,8 +1,6 @@
 from collections import deque
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        for i in range(len(nums)):
-            if nums[i] >= target: return 1
         sizes= []
         l = 0
         cur = 0
