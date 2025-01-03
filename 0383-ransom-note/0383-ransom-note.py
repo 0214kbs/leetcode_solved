@@ -1,10 +1,13 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        ri = 0
-        for mi in range(len(magazine)):
-            if magazine[mi] == ransomNote[ri]:
-                ri +=1 
-                if len(ransomNote) == ri: return True # over
-            else:
-                ri = 0
-        return False
+        check = {}
+        for m in magazine:
+            if m in check:
+                check[m] +=1
+            else: check[m] = 1
+        for r in ransomNote:
+            if r in check:
+                check[r] -= 1
+                if check[r] < 0: return False
+            else: return False
+        return True
