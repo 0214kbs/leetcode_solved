@@ -3,24 +3,14 @@ class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         for i in range(len(nums)):
             if nums[i] >= target: return 1
-        MAXV = 10**5+1
-        answer = MAXV
-        left, right = 0,0
-        cur = nums[0]
-        while right < len(nums):
-            if cur < target:
-                right +=1
-                if right == len(nums): continue
-                cur += nums[right]
-            else:
-                answer = min(answer, right-left+1)
-                if left == right: 
-                    left +=1 
-                    right +=1
-                    if right == len(nums): continue
-                    cur = nums[right]
-                else:
-                    cur -= nums[left]
-                    left += 1
-        if answer == MAXV : return 0
-        else: return answer
+        sizes= []
+        l = 0
+        cur = 0
+        for r in range(len(nums)):
+            cur += nums[r] 
+            while cur >= target:
+                sizes.append(r-l+1)
+                cur -= nums[l]
+                l +=1
+        if len(sizes) == 0: return 0
+        return min(sizes)
