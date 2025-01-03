@@ -1,15 +1,12 @@
 from collections import deque
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        if len(nums) == 1:
-            if nums[0] == target: return 1
-            else: return 0
-        if nums[0] >= target: return 1
-        MAXV = 10**5
-        answer = MAXV   
-        left = 0
-        right = 0
-        cur = nums[left]
+        for i in range(len(nums)):
+            if nums[i] >= target: return 1
+        MAXV = 10**5+1
+        answer = MAXV
+        left, right = 0,0
+        cur = nums[0]
         while right < len(nums):
             if cur < target:
                 right +=1
