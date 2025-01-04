@@ -23,6 +23,6 @@ class Solution:
                 if int(grid[r][c]) > 0:
                     grid[r][c] = str(-cnt)
                     bfs(-cnt, r,c)
-                cnt += 1
+                    cnt += 1
         
         return cnt-1
